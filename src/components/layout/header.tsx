@@ -2,11 +2,8 @@ import React from 'react';
 import { SidebarTrigger } from '../ui/sidebar';
 import { Separator } from '../ui/separator';
 import { Breadcrumbs } from '../breadcrumbs';
-import SearchInput from '../search-input';
-import { UserNav } from './user-nav';
 import { ThemeSelector } from '../theme-selector';
 import { ModeToggle } from './ThemeToggle/theme-toggle';
-import CtaGithub from './cta-github';
 
 export default function Header() {
   return (
@@ -18,11 +15,11 @@ export default function Header() {
       </div>
 
       <div className='flex items-center gap-2 px-4'>
-        <CtaGithub />
-        <div className='hidden md:flex'>
-          <SearchInput />
+        <div>
+          <kbd className='bg-muted pointer-events-none right-[0.3rem] hidden h-6 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none sm:flex'>
+            <span className='text-xs'>⌘</span>K
+          </kbd>
         </div>
-        <UserNav />
         <ModeToggle />
         <ThemeSelector />
       </div>
