@@ -110,6 +110,7 @@ function ChartTooltipContent({
   payload,
   className,
   indicator = 'dot',
+  reverseTooltip = false,
   hideLabel = false,
   hideIndicator = false,
   label,
@@ -124,6 +125,7 @@ function ChartTooltipContent({
     hideLabel?: boolean;
     hideIndicator?: boolean;
     indicator?: 'line' | 'dot' | 'dashed';
+    reverseTooltip?: boolean;
     nameKey?: string;
     labelKey?: string;
   }) {
@@ -170,7 +172,7 @@ function ChartTooltipContent({
   }
 
   const nestLabel = payload.length === 1 && indicator !== 'dot';
-
+  const tooltipPayload = reverseTooltip ? payload.slice().reverse() : payload;
   return (
     <div
       className={cn(
@@ -180,11 +182,10 @@ function ChartTooltipContent({
     >
       {!nestLabel ? tooltipLabel : null}
       <div className='grid gap-1.5'>
-        {payload.map((item, index) => {
+        {tooltipPayload.map((item, index) => {
           const key = `${nameKey || item.name || item.dataKey || 'value'}`;
           const itemConfig = getPayloadConfigFromPayload(config, item, key);
           const indicatorColor = color || item.payload.fill || item.color;
-
           return (
             <div
               key={item.dataKey}

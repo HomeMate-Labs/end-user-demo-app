@@ -26,7 +26,7 @@ import {
   SidebarRail
 } from '@/components/ui/sidebar';
 import { UserAvatarProfile } from '@/components/user-avatar-profile';
-import { navItems } from '@/constants/data';
+import { navItems, user } from '@/constants/data';
 import { useMediaQuery } from '@/hooks/use-media-query';
 import { IconChevronRight, IconChevronsDown } from '@tabler/icons-react';
 import Link from 'next/link';
@@ -34,20 +34,9 @@ import { usePathname, useRouter } from 'next/navigation';
 import * as React from 'react';
 import { Icons } from '../icons';
 
-interface User {
-  imageUrl?: string;
-  fullName?: string | null;
-  emailAddresses: Array<{ emailAddress: string }>;
-}
-
 export default function AppSidebar() {
   const pathname = usePathname();
   const { isOpen } = useMediaQuery();
-  const user: User = {
-    imageUrl: '',
-    fullName: 'Mislav Ivanda',
-    emailAddresses: [{ emailAddress: 'mislavivanda454@gmail.com' }]
-  };
   const router = useRouter();
 
   React.useEffect(() => {

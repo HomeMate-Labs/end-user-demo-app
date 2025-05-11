@@ -17,26 +17,18 @@ import {
   ChartTooltip,
   ChartTooltipContent
 } from '@/components/ui/chart';
-
-const chartData = [
-  { month: 'January', desktop: 186, mobile: 80 },
-  { month: 'February', desktop: 305, mobile: 200 },
-  { month: 'March', desktop: 237, mobile: 120 },
-  { month: 'April', desktop: 73, mobile: 190 },
-  { month: 'May', desktop: 209, mobile: 130 },
-  { month: 'June', desktop: 214, mobile: 140 }
-];
+import { areaChartData } from '@/constants/data';
 
 const chartConfig = {
-  visitors: {
-    label: 'Visitors'
+  earnings: {
+    label: 'Earnings'
   },
-  desktop: {
-    label: 'Desktop',
+  commercial: {
+    label: 'Commercial',
     color: 'var(--primary)'
   },
-  mobile: {
-    label: 'Mobile',
+  public_good: {
+    label: 'Public Good',
     color: 'var(--primary)'
   }
 } satisfies ChartConfig;
@@ -45,9 +37,10 @@ export function AreaGraph() {
   return (
     <Card className='@container/card'>
       <CardHeader>
-        <CardTitle>Area Chart - Stacked</CardTitle>
+        <CardTitle>Public Good vs. Commercial Earnings</CardTitle>
         <CardDescription>
-          Showing total visitors for the last 6 months
+          Compare your earnings from public good projects and commercial data
+          for the last 6 months
         </CardDescription>
       </CardHeader>
       <CardContent className='px-2 pt-4 sm:px-6 sm:pt-6'>
@@ -56,7 +49,7 @@ export function AreaGraph() {
           className='aspect-auto h-[250px] w-full'
         >
           <AreaChart
-            data={chartData}
+            data={areaChartData}
             margin={{
               left: 12,
               right: 12
@@ -66,24 +59,24 @@ export function AreaGraph() {
               <linearGradient id='fillDesktop' x1='0' y1='0' x2='0' y2='1'>
                 <stop
                   offset='5%'
-                  stopColor='var(--color-desktop)'
+                  stopColor='var(--color-commercial)'
                   stopOpacity={1.0}
                 />
                 <stop
                   offset='95%'
-                  stopColor='var(--color-desktop)'
+                  stopColor='var(--color-commercial)'
                   stopOpacity={0.1}
                 />
               </linearGradient>
               <linearGradient id='fillMobile' x1='0' y1='0' x2='0' y2='1'>
                 <stop
                   offset='5%'
-                  stopColor='var(--color-mobile)'
+                  stopColor='var(--color-public_good)'
                   stopOpacity={0.8}
                 />
                 <stop
                   offset='95%'
-                  stopColor='var(--color-mobile)'
+                  stopColor='var(--color-public_good)'
                   stopOpacity={0.1}
                 />
               </linearGradient>
@@ -99,20 +92,20 @@ export function AreaGraph() {
             />
             <ChartTooltip
               cursor={false}
-              content={<ChartTooltipContent indicator='dot' />}
+              content={<ChartTooltipContent indicator='dot' reverseTooltip />}
             />
             <Area
-              dataKey='mobile'
+              dataKey='public_good'
               type='natural'
               fill='url(#fillMobile)'
-              stroke='var(--color-mobile)'
+              stroke='var(--color-public_good)'
               stackId='a'
             />
             <Area
-              dataKey='desktop'
+              dataKey='commercial'
               type='natural'
               fill='url(#fillDesktop)'
-              stroke='var(--color-desktop)'
+              stroke='var(--color-commercial)'
               stackId='a'
             />
           </AreaChart>
@@ -121,12 +114,16 @@ export function AreaGraph() {
       <CardFooter>
         <div className='flex w-full items-start gap-2 text-sm'>
           <div className='grid gap-2'>
-            <div className='flex items-center gap-2 leading-none font-medium'>
-              Trending up by 5.2% this month{' '}
-              <IconTrendingUp className='h-4 w-4' />
+            <div className='flex items-center gap-2 leading-none'>
+              <span className='font-medium'>Commercial:</span> Trending up by
+              31.8% this month <IconTrendingUp className='h-4 w-4' />
+            </div>
+            <div className='flex items-center gap-2 leading-none'>
+              <span className='font-medium'>Public Good:</span> Trending up by
+              60% this month <IconTrendingUp className='h-4 w-4' />
             </div>
             <div className='text-muted-foreground flex items-center gap-2 leading-none'>
-              January - June 2024
+              {`${areaChartData[0].month} ${areaChartData[0].year} - ${areaChartData[areaChartData.length - 1].month} ${areaChartData[areaChartData.length - 1].year}`}
             </div>
           </div>
         </div>
