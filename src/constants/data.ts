@@ -196,13 +196,13 @@ function formatTimeAgo(date: Date): string {
   const days = Math.floor(hours / 24);
 
   if (seconds < 60) {
-    return `${seconds} sec${seconds !== 1 ? 's' : ''} ago`;
+    return `${seconds} sec${seconds !== 1 ? 's' : ''}`;
   } else if (minutes < 60) {
-    return `${minutes} min${minutes !== 1 ? 's' : ''} ago`;
+    return `${minutes} min${minutes !== 1 ? 's' : ''}`;
   } else if (hours < 24) {
-    return `${hours} hr${hours !== 1 ? 's' : ''} ago`;
+    return `${hours} hr${hours !== 1 ? 's' : ''}`;
   } else {
-    return `${days} day${days !== 1 ? 's' : ''} ago`;
+    return `${days} day${days !== 1 ? 's' : ''}`;
   }
 }
 

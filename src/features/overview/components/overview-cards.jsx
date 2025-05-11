@@ -17,7 +17,7 @@ export function OverviewCards() {
         <CardHeader>
           <CardDescription>Token Balance</CardDescription>
           <CardTitle className='text-2xl font-semibold tabular-nums @[250px]/card:text-3xl'>
-            HM 92
+            92 HMNT
           </CardTitle>
           <CardAction>
             <Badge variant='outline'>
@@ -66,7 +66,7 @@ export function OverviewCards() {
         <CardHeader>
           <CardDescription>Total Earned</CardDescription>
           <CardTitle className='text-2xl font-semibold tabular-nums @[250px]/card:text-3xl'>
-            {`HM ${totalTokensSum}`}
+            {`${totalTokensSum} HMNT`}
           </CardTitle>
         </CardHeader>
         <CardFooter className='flex-col items-start gap-1.5 text-sm'>

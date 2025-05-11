@@ -9,15 +9,12 @@ export function RecentTrans() {
         <CardTitle>Recent Transactions</CardTitle>
       </CardHeader>
       <CardContent>
-        <div className='space-y-8 overflow-x-auto'>
+        <div className='flex flex-col space-y-8 overflow-x-auto'>
           {recentDataTransactions.map((transaction, index) => (
-            <div
-              key={index}
-              className='relative flex items-center justify-between pr-[20%]'
-            >
+            <div key={index} className='flex items-center'>
               <div className='grow'>{transaction.transaction_id}</div>
-              <div className='ml-auto font-medium'>{`${transaction.earned_tokens}HM`}</div>
-              <div className='absolute right-0 ml-4 space-y-1'>
+              <div className='mr-1 ml-1 shrink-0 grow-0 basis-[15%] text-right font-medium'>{`${transaction.earned_tokens}HMNT`}</div>
+              <div className='mr-1 ml-1 shrink-0 grow-0 basis-[15%] space-y-1 text-right'>
                 <p className='text-muted-foreground text-sm'>
                   {transaction.time_ago}
                 </p>
