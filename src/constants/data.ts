@@ -130,6 +130,10 @@ const availableDataTypes = [
   { label: 'Device Metadata', field: 'device_metadata' }
 ];
 
+export const availableDataTypesFilterOptions = availableDataTypes.map(
+  (dataType) => ({ label: dataType.label, value: dataType.field })
+);
+
 const earnedTokensByDataType = [
   availableDataTypes[0],
   availableDataTypes[2],
@@ -226,3 +230,33 @@ mockDataTransactions.sort(
 
 export const recentDataTransactions: DataPublishTransaction[] =
   mockDataTransactions;
+
+interface DeviceDataForDataType {
+  categoryValue: String;
+  public_good_use: boolean;
+  commercial_use: boolean;
+}
+
+export type Device = {
+  name: string;
+  serial_number: string;
+  software_version: string;
+  hardware_version: string;
+  categories: Array<DeviceDataForDataType>;
+};
+
+export const devices: Device[] = [
+  {
+    name: 'Test device 1',
+    serial_number: '5d656sd6dsw65',
+    software_version: '1.0.5.',
+    hardware_version: '1.8.7.',
+    categories: [
+      {
+        categoryValue: 'temperature',
+        public_good_use: true,
+        commercial_use: true
+      }
+    ]
+  }
+];

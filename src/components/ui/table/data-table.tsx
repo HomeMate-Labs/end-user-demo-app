@@ -16,11 +16,15 @@ import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 interface DataTableProps<TData> extends React.ComponentProps<'div'> {
   table: TanstackTable<TData>;
   actionBar?: React.ReactNode;
+  isDeviceTable?: boolean;
+  selectedDeviceCategory?: string;
 }
 
 export function DataTable<TData>({
   table,
   actionBar,
+  isDeviceTable = false,
+  selectedDeviceCategory,
   children
 }: DataTableProps<TData>) {
   return (
@@ -80,7 +84,9 @@ export function DataTable<TData>({
                       colSpan={table.getAllColumns().length}
                       className='h-24 text-center'
                     >
-                      No results.
+                      {isDeviceTable && !selectedDeviceCategory
+                        ? 'Please select a data type category to view its data.'
+                        : 'No results.'}
                     </TableCell>
                   </TableRow>
                 )}

@@ -1,5 +1,6 @@
 import PageContainer from '@/components/layout/page-container';
 import { Heading } from '@/components/ui/heading';
+import DeviceListing from '@/features/devices/components/devices-listing';
 import { Separator } from '@/components/ui/separator';
 import { searchParamsCache } from '@/lib/searchparams';
 import { SearchParams } from 'nuqs/server';
@@ -14,11 +15,7 @@ type pageProps = {
 
 export default async function Page(props: pageProps) {
   const searchParams = await props.searchParams;
-  // Allow nested RSCs to access the search params (in a type-safe way)
   searchParamsCache.parse(searchParams);
-
-  // This key is used for invoke suspense if any of the search params changed (used for filters).
-  // const key = serialize({ ...searchParams });
 
   return (
     <PageContainer scrollable={false}>
@@ -30,6 +27,7 @@ export default async function Page(props: pageProps) {
           />
         </div>
         <Separator />
+        <DeviceListing />
       </div>
     </PageContainer>
   );
