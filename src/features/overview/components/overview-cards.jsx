@@ -1,5 +1,6 @@
 'use client';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardHeader,
@@ -19,11 +20,14 @@ export function OverviewCards() {
           <CardTitle className='text-2xl font-semibold tabular-nums @[250px]/card:text-3xl'>
             92 HMNT
           </CardTitle>
-          <CardAction>
+          <CardAction className='flex flex-col items-center'>
             <Badge variant='outline'>
               <IconTrendingUp />
               +12.5%
             </Badge>
+            <Button variant='default' size='sm' className='mt-1.5'>
+              Claim
+            </Button>
           </CardAction>
         </CardHeader>
         <CardFooter className='flex-col items-start gap-1.5 text-sm'>
