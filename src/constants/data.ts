@@ -245,18 +245,69 @@ export type Device = {
   categories: Array<DeviceDataForDataType>;
 };
 
-export const devices: Device[] = [
-  {
-    name: 'Test device 1',
-    serial_number: '5d656sd6dsw65',
-    software_version: '1.0.5.',
-    hardware_version: '1.8.7.',
-    categories: [
-      {
-        categoryValue: 'temperature',
-        public_good_use: true,
-        commercial_use: true
-      }
-    ]
-  }
-];
+const availableDataTypesValues = availableDataTypesFilterOptions.map(
+  (dataTypeOption) => dataTypeOption.value
+);
+
+export const devices: Device[] = Array.from({ length: 30 }, (_, i) => {
+  const categories = getRandomCategories();
+  return {
+    name: generateName(categories),
+    serial_number: generateSerial(),
+    software_version: `v${randomVersion()}`,
+    hardware_version: `v${randomVersion()}`,
+    categories: categories.map((cat) => ({
+      categoryValue: cat,
+      public_good_use: Math.random() < 0.6,
+      commercial_use: Math.random() < 0.6
+    }))
+  };
+});
+
+function getRandomCategories() {
+  const shuffled = [...availableDataTypesValues].sort(
+    () => 0.5 - Math.random()
+  );
+  return shuffled.slice(0, Math.floor(Math.random() * 4) + 1);
+}
+
+function generateSerial() {
+  return (
+    Math.random().toString(36).substring(2, 6).toUpperCase() +
+    '-' +
+    Math.random().toString(36).substring(2, 6).toUpperCase()
+  );
+}
+
+function randomVersion() {
+  return `${rand(1, 3)}.${rand(0, 9)}.${rand(0, 19)}`;
+}
+
+function rand(min: number, max: number) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function generateName(categories: string[]): string {
+  const has = (cat: string) => categories.includes(cat);
+
+  if (has('temperature') && has('humidity')) return 'TempSense Pro';
+  if (has('energy') && has('behavioral')) return 'SmartEnergy Hub';
+  if (has('air_quality') && has('noise')) return 'AirAware Monitor';
+  if (has('water_leak_humidty')) return 'LeakGuard Plus';
+  if (has('door_window') && has('alarm_safety')) return 'SecureEntry Unit';
+  if (has('occupany') && has('behavioral')) return 'PresenceTrack Beacon';
+  if (has('water_usage')) return 'AquaMeter';
+  if (has('alarm_safety') && has('device_metadata')) return 'SafeHome Node';
+  if (has('door_window')) return 'DoorSense';
+  if (has('occupany')) return 'RoomOccupy Sensor';
+  if (has('air_quality')) return 'AirCheck Station';
+  if (has('noise')) return 'NoiseWatcher';
+  if (has('temperature')) return 'ThermoPoint';
+  if (has('humidity')) return 'HumidGuard';
+  if (has('energy')) return 'PowerWatch';
+  if (has('behavioral')) return 'HabitLogger';
+  if (has('device_metadata')) return 'MetaSensor-X';
+
+  // Fallback if no pattern matched
+  return `SmartHome Device ${rand(1000, 9999)}`;
+}
