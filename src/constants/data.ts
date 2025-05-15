@@ -17,6 +17,14 @@ export const navItems: NavItem[] = [
     shortcut: ['d', 'd'],
     isActive: false,
     items: [] // No child items
+  },
+  {
+    title: 'Account',
+    url: '/dashboard/profile',
+    icon: 'user2',
+    shortcut: ['u', 'u'],
+    isActive: false,
+    items: [] // No child items
   }
 ];
 
@@ -24,12 +32,14 @@ interface User {
   imageUrl?: string;
   fullName?: string | null;
   emailAddresses: Array<{ emailAddress: string }>;
+  walletAddress: string;
 }
 
 export const user: User = {
   imageUrl: '',
   fullName: 'Mislav Ivanda',
-  emailAddresses: [{ emailAddress: 'mislavivanda454@gmail.com' }]
+  emailAddresses: [{ emailAddress: 'mislavivanda454@gmail.com' }],
+  walletAddress: '2Mvbrxj7LYZNmEtEGxfn7QGLNchcfmZCiSKk6t7R1UrX'
 };
 
 interface DailyEarningsData {
@@ -41,7 +51,7 @@ const last6MonthsEarningsData: DailyEarningsData[] = [];
 const today = new Date();
 const days = 180;
 const avgTokensPerDay = 33;
-const variance = 15;
+const dailyEarningsVariance = 15;
 
 for (let i = days - 1; i >= 0; i--) {
   const date = new Date(today);
@@ -50,7 +60,8 @@ for (let i = days - 1; i >= 0; i--) {
   const dateString = date.toISOString().split('T')[0];
 
   const totalTokens = Math.round(
-    avgTokensPerDay + (Math.random() * variance - variance / 2)
+    avgTokensPerDay +
+      (Math.random() * dailyEarningsVariance - dailyEarningsVariance / 2)
   );
   const commercial = Math.round(totalTokens * (0.4 + Math.random() * 0.2)); // 40–60% commercial
   const public_good = totalTokens - commercial;
@@ -99,6 +110,8 @@ const finalResult = Object.keys(result).map((month) => ({
 }));
 
 export const areaChartData = finalResult.slice(-6);
+
+export const tokensBalance = 92;
 
 export const totalTokensSum = last6MonthsEarningsData.reduce(
   (acc, current) => (acc += current.commercial + current.public_good),
@@ -230,6 +243,84 @@ mockDataTransactions.sort(
 
 export const recentDataTransactions: DataPublishTransaction[] =
   mockDataTransactions;
+
+interface WithdrawalTransaction {
+  transaction_id: string;
+  withdrawn_tokens: number;
+  transaction_date: string;
+}
+
+const withdrawalTransactionsCount = 5;
+const distributableAmount = totalTokensSum - tokensBalance;
+const avg = distributableAmount / withdrawalTransactionsCount;
+const withdrawalVariance = 0.2;
+let mockWithdrawalTransactions = [];
+let rawValues = [];
+
+const parseDate = (rawTime: Date) =>
+  rawTime.getDate().toString().padStart(2, '0') +
+  '.' +
+  (rawTime.getMonth() + 1).toString().padStart(2, '0') +
+  '.' +
+  rawTime.getFullYear() +
+  ' ' +
+  rawTime.getHours().toString().padStart(2, '0') +
+  ':' +
+  rawTime.getMinutes().toString().padStart(2, '0') +
+  ':' +
+  rawTime.getSeconds().toString().padStart(2, '0');
+
+for (let i = 0; i < withdrawalTransactionsCount; i++) {
+  const baseDate = new Date(now.getFullYear(), now.getMonth() - i, 1);
+
+  // Random day in the month (1 to 28 for safety across months)
+  const day = Math.floor(Math.random() * 28) + 1;
+
+  // Random time
+  const hours = Math.floor(Math.random() * 24);
+  const minutes = Math.floor(Math.random() * 60);
+  const seconds = Math.floor(Math.random() * 60);
+
+  const fullDate = new Date(
+    baseDate.getFullYear(),
+    baseDate.getMonth(),
+    day,
+    hours,
+    minutes,
+    seconds
+  );
+  const min = avg * (1 - withdrawalVariance);
+  const max = avg * (1 + withdrawalVariance);
+  const value = Math.random() * (max - min) + min;
+  rawValues.push(value);
+  mockWithdrawalTransactions.push({
+    transaction_id: generateBase58String(32), // Generate mock Solana transaction hash
+    transaction_date: parseDate(fullDate),
+    withdrawn_tokens: 0 // Initialize later
+  });
+}
+
+// Normalize the raw values so their sum = distributableAmount
+const rawSum = rawValues.reduce((a, b) => a + b, 0);
+const scaledValues = rawValues.map((v) => (v / rawSum) * distributableAmount);
+
+// Optional: Round to a fixed decimal (e.g., 2 decimal places)
+const finalValues = scaledValues.map((v) => Math.round(v * 100) / 100);
+
+// Adjust rounding error to ensure exact sum
+const finalSum = finalValues.reduce((a, b) => a + b, 0);
+const diff = Math.round((distributableAmount - finalSum) * 100) / 100;
+
+// Fix last value to balance the total
+finalValues[finalValues.length - 1] += diff;
+
+mockWithdrawalTransactions.forEach(
+  (withdrawalTransaction, index) =>
+    (withdrawalTransaction.withdrawn_tokens = Math.floor(finalValues[index]))
+);
+
+export const withdrawalTransactions: WithdrawalTransaction[] =
+  mockWithdrawalTransactions;
 
 interface DeviceDataForDataType {
   categoryValue: String;

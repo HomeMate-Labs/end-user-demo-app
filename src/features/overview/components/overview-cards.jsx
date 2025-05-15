@@ -10,7 +10,7 @@ import {
   CardFooter
 } from '@/components/ui/card';
 import { IconTrendingUp } from '@tabler/icons-react';
-import { totalTokensSum } from '@/constants/data';
+import { tokensBalance, totalTokensSum } from '@/constants/data';
 export function OverviewCards() {
   return (
     <>
@@ -18,7 +18,7 @@ export function OverviewCards() {
         <CardHeader>
           <CardDescription>Token Balance</CardDescription>
           <CardTitle className='text-2xl font-semibold tabular-nums @[250px]/card:text-3xl'>
-            92 HMNT
+            {`${tokensBalance} HMNT`}
           </CardTitle>
           <CardAction className='flex flex-col items-center'>
             <Badge variant='outline'>

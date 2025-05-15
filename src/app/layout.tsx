@@ -15,8 +15,9 @@ const META_THEME_COLORS = {
 };
 
 export const metadata: Metadata = {
-  title: 'Next Shadcn',
-  description: 'Basic dashboard with Next.js and Shadcn'
+  title: 'HomeMate',
+  description:
+    'A demo application showcasing the end-user experience for HomeMate'
 };
 
 export const viewport: Viewport = {
