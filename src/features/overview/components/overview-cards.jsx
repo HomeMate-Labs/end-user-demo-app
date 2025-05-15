@@ -10,7 +10,12 @@ import {
   CardFooter
 } from '@/components/ui/card';
 import { IconTrendingUp } from '@tabler/icons-react';
-import { tokensBalance, totalTokensSum } from '@/constants/data';
+import {
+  tokensBalance,
+  totalTokensSum,
+  devices,
+  availableDataTypesFilterOptions
+} from '@/constants/data';
 export function OverviewCards() {
   return (
     <>
@@ -43,7 +48,7 @@ export function OverviewCards() {
         <CardHeader>
           <CardDescription>Active Devices</CardDescription>
           <CardTitle className='text-2xl font-semibold tabular-nums @[250px]/card:text-3xl'>
-            5
+            {devices.length}
           </CardTitle>
           <CardAction></CardAction>
         </CardHeader>
@@ -57,7 +62,7 @@ export function OverviewCards() {
         <CardHeader>
           <CardDescription>Data Types</CardDescription>
           <CardTitle className='text-2xl font-semibold tabular-nums @[250px]/card:text-3xl'>
-            4
+            {availableDataTypesFilterOptions.length}
           </CardTitle>
         </CardHeader>
         <CardFooter className='flex-col items-start gap-1.5 text-sm'>
