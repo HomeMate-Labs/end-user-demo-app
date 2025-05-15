@@ -19,10 +19,10 @@ export const navItems: NavItem[] = [
     items: [] // No child items
   },
   {
-    title: 'Account',
+    title: 'Profile',
     url: '/dashboard/profile',
     icon: 'user2',
-    shortcut: ['u', 'u'],
+    shortcut: ['p', 'p'],
     isActive: false,
     items: [] // No child items
   }

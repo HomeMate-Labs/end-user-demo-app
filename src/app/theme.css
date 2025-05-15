@@ -70,6 +70,17 @@ body {
   }
 }
 
+.theme-purple,
+.theme-purple-scaled {
+  --primary: #8c52ff;
+  --primary-foreground: #f3e8ff; /* a soft foreground that contrasts */
+
+  @variant dark {
+    --primary: #a377ff; /* lighter for dark mode */
+    --primary-foreground: #f5f3ff;
+  }
+}
+
 .theme-mono,
 .theme-mono-scaled {
   --font-sans: var(--font-mono);

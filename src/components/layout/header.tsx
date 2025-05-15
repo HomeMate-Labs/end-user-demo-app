@@ -2,7 +2,7 @@ import React from 'react';
 import { SidebarTrigger } from '../ui/sidebar';
 import { Separator } from '../ui/separator';
 import { Breadcrumbs } from '../breadcrumbs';
-import { ThemeSelector } from '../theme-selector';
+// import { ThemeSelector } from '../theme-selector';
 import { ModeToggle } from './ThemeToggle/theme-toggle';
 
 export default function Header() {
@@ -21,7 +21,7 @@ export default function Header() {
           </kbd>
         </div>
         <ModeToggle />
-        <ThemeSelector />
+        {/* <ThemeSelector /> */}
       </div>
     </header>
   );
