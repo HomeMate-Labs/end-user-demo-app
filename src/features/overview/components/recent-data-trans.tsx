@@ -13,9 +13,9 @@ export function RecentTrans() {
           {recentDataTransactions.map((transaction, index) => (
             <div key={index} className='flex items-center'>
               <div className='grow'>{transaction.transaction_id}</div>
-              <div className='mr-1 ml-1 shrink-0 grow-0 basis-[15%] text-right font-medium'>{`${transaction.earned_tokens}HMNT`}</div>
+              <div className='mr-1 ml-1 shrink-0 grow-0 basis-[15%] text-right font-medium'>{`+${transaction.earned_tokens}HMNT`}</div>
               <div className='mr-1 ml-1 shrink-0 grow-0 basis-[15%] space-y-1 text-right'>
-                <p className='text-muted-foreground text-sm'>
+                <p className='text-muted-foreground text-sm whitespace-nowrap'>
                   {transaction.time_ago}
                 </p>
               </div>

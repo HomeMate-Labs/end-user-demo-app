@@ -24,12 +24,12 @@ export default function DevicesListingPage() {
 
   //*PAGINATION PART
   const offset = (page - 1) * pageLimit;
-  const paginatedDevices: Device[] = categoryDevices.slice(
+  const paginatedDevices: Device[] = filteredDevicesByName.slice(
     offset,
     offset + pageLimit
   );
 
-  const totalCategoryDevices = categoryDevices.length;
+  const totalCategoryDevices = filteredDevicesByName.length;
   return (
     <DeviceTable
       data={paginatedDevices}

@@ -47,86 +47,1405 @@ interface DailyEarningsData {
   commercial: number;
   public_good: number;
 }
-const last6MonthsEarningsData: DailyEarningsData[] = [];
-const today = new Date();
-const days = 180;
-const avgTokensPerDay = 33;
-const dailyEarningsVariance = 15;
-
-for (let i = days - 1; i >= 0; i--) {
-  const date = new Date(today);
-  date.setDate(today.getDate() - i);
-
-  const dateString = date.toISOString().split('T')[0];
-
-  const totalTokens = Math.round(
-    avgTokensPerDay +
-      (Math.random() * dailyEarningsVariance - dailyEarningsVariance / 2)
-  );
-  const commercial = Math.round(totalTokens * (0.4 + Math.random() * 0.2)); // 40–60% commercial
-  const public_good = totalTokens - commercial;
-
-  last6MonthsEarningsData.push({
-    date: dateString,
-    commercial,
-    public_good
-  });
-}
+export const last6MonthsEarningsData: DailyEarningsData[] = [
+  {
+    date: '2024-11-17',
+    commercial: 16,
+    public_good: 17
+  },
+  {
+    date: '2024-11-18',
+    commercial: 16,
+    public_good: 17
+  },
+  {
+    date: '2024-11-19',
+    commercial: 16,
+    public_good: 12
+  },
+  {
+    date: '2024-11-20',
+    commercial: 17,
+    public_good: 12
+  },
+  {
+    date: '2024-11-21',
+    commercial: 19,
+    public_good: 17
+  },
+  {
+    date: '2024-11-22',
+    commercial: 15,
+    public_good: 14
+  },
+  {
+    date: '2024-11-23',
+    commercial: 20,
+    public_good: 20
+  },
+  {
+    date: '2024-11-24',
+    commercial: 17,
+    public_good: 20
+  },
+  {
+    date: '2024-11-25',
+    commercial: 18,
+    public_good: 16
+  },
+  {
+    date: '2024-11-26',
+    commercial: 13,
+    public_good: 18
+  },
+  {
+    date: '2024-11-27',
+    commercial: 15,
+    public_good: 19
+  },
+  {
+    date: '2024-11-28',
+    commercial: 21,
+    public_good: 19
+  },
+  {
+    date: '2024-11-29',
+    commercial: 21,
+    public_good: 17
+  },
+  {
+    date: '2024-11-30',
+    commercial: 18,
+    public_good: 17
+  },
+  {
+    date: '2024-12-01',
+    commercial: 16,
+    public_good: 15
+  },
+  {
+    date: '2024-12-02',
+    commercial: 15,
+    public_good: 16
+  },
+  {
+    date: '2024-12-03',
+    commercial: 15,
+    public_good: 15
+  },
+  {
+    date: '2024-12-04',
+    commercial: 16,
+    public_good: 14
+  },
+  {
+    date: '2024-12-05',
+    commercial: 22,
+    public_good: 17
+  },
+  {
+    date: '2024-12-06',
+    commercial: 15,
+    public_good: 21
+  },
+  {
+    date: '2024-12-07',
+    commercial: 15,
+    public_good: 14
+  },
+  {
+    date: '2024-12-08',
+    commercial: 22,
+    public_good: 15
+  },
+  {
+    date: '2024-12-09',
+    commercial: 15,
+    public_good: 23
+  },
+  {
+    date: '2024-12-10',
+    commercial: 19,
+    public_good: 14
+  },
+  {
+    date: '2024-12-11',
+    commercial: 18,
+    public_good: 15
+  },
+  {
+    date: '2024-12-12',
+    commercial: 17,
+    public_good: 16
+  },
+  {
+    date: '2024-12-13',
+    commercial: 18,
+    public_good: 14
+  },
+  {
+    date: '2024-12-14',
+    commercial: 21,
+    public_good: 17
+  },
+  {
+    date: '2024-12-15',
+    commercial: 19,
+    public_good: 14
+  },
+  {
+    date: '2024-12-16',
+    commercial: 17,
+    public_good: 14
+  },
+  {
+    date: '2024-12-17',
+    commercial: 13,
+    public_good: 17
+  },
+  {
+    date: '2024-12-18',
+    commercial: 14,
+    public_good: 12
+  },
+  {
+    date: '2024-12-19',
+    commercial: 13,
+    public_good: 15
+  },
+  {
+    date: '2024-12-20',
+    commercial: 16,
+    public_good: 13
+  },
+  {
+    date: '2024-12-21',
+    commercial: 20,
+    public_good: 18
+  },
+  {
+    date: '2024-12-22',
+    commercial: 13,
+    public_good: 19
+  },
+  {
+    date: '2024-12-23',
+    commercial: 15,
+    public_good: 18
+  },
+  {
+    date: '2024-12-24',
+    commercial: 14,
+    public_good: 14
+  },
+  {
+    date: '2024-12-25',
+    commercial: 17,
+    public_good: 19
+  },
+  {
+    date: '2024-12-26',
+    commercial: 16,
+    public_good: 18
+  },
+  {
+    date: '2024-12-27',
+    commercial: 16,
+    public_good: 18
+  },
+  {
+    date: '2024-12-28',
+    commercial: 14,
+    public_good: 15
+  },
+  {
+    date: '2024-12-29',
+    commercial: 14,
+    public_good: 18
+  },
+  {
+    date: '2024-12-30',
+    commercial: 18,
+    public_good: 17
+  },
+  {
+    date: '2024-12-31',
+    commercial: 19,
+    public_good: 14
+  },
+  {
+    date: '2025-01-01',
+    commercial: 16,
+    public_good: 12
+  },
+  {
+    date: '2025-01-02',
+    commercial: 17,
+    public_good: 16
+  },
+  {
+    date: '2025-01-03',
+    commercial: 21,
+    public_good: 15
+  },
+  {
+    date: '2025-01-04',
+    commercial: 19,
+    public_good: 21
+  },
+  {
+    date: '2025-01-05',
+    commercial: 14,
+    public_good: 17
+  },
+  {
+    date: '2025-01-06',
+    commercial: 18,
+    public_good: 18
+  },
+  {
+    date: '2025-01-07',
+    commercial: 23,
+    public_good: 15
+  },
+  {
+    date: '2025-01-08',
+    commercial: 20,
+    public_good: 14
+  },
+  {
+    date: '2025-01-09',
+    commercial: 16,
+    public_good: 16
+  },
+  {
+    date: '2025-01-10',
+    commercial: 14,
+    public_good: 21
+  },
+  {
+    date: '2025-01-11',
+    commercial: 18,
+    public_good: 15
+  },
+  {
+    date: '2025-01-12',
+    commercial: 17,
+    public_good: 17
+  },
+  {
+    date: '2025-01-13',
+    commercial: 16,
+    public_good: 20
+  },
+  {
+    date: '2025-01-14',
+    commercial: 16,
+    public_good: 18
+  },
+  {
+    date: '2025-01-15',
+    commercial: 15,
+    public_good: 12
+  },
+  {
+    date: '2025-01-16',
+    commercial: 12,
+    public_good: 15
+  },
+  {
+    date: '2025-01-17',
+    commercial: 13,
+    public_good: 19
+  },
+  {
+    date: '2025-01-18',
+    commercial: 13,
+    public_good: 13
+  },
+  {
+    date: '2025-01-19',
+    commercial: 22,
+    public_good: 15
+  },
+  {
+    date: '2025-01-20',
+    commercial: 12,
+    public_good: 17
+  },
+  {
+    date: '2025-01-21',
+    commercial: 20,
+    public_good: 16
+  },
+  {
+    date: '2025-01-22',
+    commercial: 20,
+    public_good: 14
+  },
+  {
+    date: '2025-01-23',
+    commercial: 15,
+    public_good: 19
+  },
+  {
+    date: '2025-01-24',
+    commercial: 13,
+    public_good: 20
+  },
+  {
+    date: '2025-01-25',
+    commercial: 17,
+    public_good: 19
+  },
+  {
+    date: '2025-01-26',
+    commercial: 17,
+    public_good: 13
+  },
+  {
+    date: '2025-01-27',
+    commercial: 11,
+    public_good: 16
+  },
+  {
+    date: '2025-01-28',
+    commercial: 20,
+    public_good: 17
+  },
+  {
+    date: '2025-01-29',
+    commercial: 19,
+    public_good: 14
+  },
+  {
+    date: '2025-01-30',
+    commercial: 12,
+    public_good: 18
+  },
+  {
+    date: '2025-01-31',
+    commercial: 17,
+    public_good: 15
+  },
+  {
+    date: '2025-02-01',
+    commercial: 13,
+    public_good: 16
+  },
+  {
+    date: '2025-02-02',
+    commercial: 20,
+    public_good: 20
+  },
+  {
+    date: '2025-02-03',
+    commercial: 18,
+    public_good: 19
+  },
+  {
+    date: '2025-02-04',
+    commercial: 20,
+    public_good: 20
+  },
+  {
+    date: '2025-02-05',
+    commercial: 23,
+    public_good: 16
+  },
+  {
+    date: '2025-02-06',
+    commercial: 16,
+    public_good: 14
+  },
+  {
+    date: '2025-02-07',
+    commercial: 11,
+    public_good: 17
+  },
+  {
+    date: '2025-02-08',
+    commercial: 15,
+    public_good: 17
+  },
+  {
+    date: '2025-02-09',
+    commercial: 17,
+    public_good: 15
+  },
+  {
+    date: '2025-02-10',
+    commercial: 15,
+    public_good: 19
+  },
+  {
+    date: '2025-02-11',
+    commercial: 22,
+    public_good: 18
+  },
+  {
+    date: '2025-02-12',
+    commercial: 19,
+    public_good: 21
+  },
+  {
+    date: '2025-02-13',
+    commercial: 14,
+    public_good: 18
+  },
+  {
+    date: '2025-02-14',
+    commercial: 15,
+    public_good: 19
+  },
+  {
+    date: '2025-02-15',
+    commercial: 17,
+    public_good: 23
+  },
+  {
+    date: '2025-02-16',
+    commercial: 15,
+    public_good: 18
+  },
+  {
+    date: '2025-02-17',
+    commercial: 21,
+    public_good: 15
+  },
+  {
+    date: '2025-02-18',
+    commercial: 19,
+    public_good: 19
+  },
+  {
+    date: '2025-02-19',
+    commercial: 21,
+    public_good: 16
+  },
+  {
+    date: '2025-02-20',
+    commercial: 13,
+    public_good: 15
+  },
+  {
+    date: '2025-02-21',
+    commercial: 22,
+    public_good: 18
+  },
+  {
+    date: '2025-02-22',
+    commercial: 15,
+    public_good: 13
+  },
+  {
+    date: '2025-02-23',
+    commercial: 22,
+    public_good: 17
+  },
+  {
+    date: '2025-02-24',
+    commercial: 15,
+    public_good: 13
+  },
+  {
+    date: '2025-02-25',
+    commercial: 14,
+    public_good: 12
+  },
+  {
+    date: '2025-02-26',
+    commercial: 19,
+    public_good: 20
+  },
+  {
+    date: '2025-02-27',
+    commercial: 17,
+    public_good: 22
+  },
+  {
+    date: '2025-02-28',
+    commercial: 16,
+    public_good: 21
+  },
+  {
+    date: '2025-03-01',
+    commercial: 11,
+    public_good: 17
+  },
+  {
+    date: '2025-03-02',
+    commercial: 12,
+    public_good: 18
+  },
+  {
+    date: '2025-03-03',
+    commercial: 20,
+    public_good: 20
+  },
+  {
+    date: '2025-03-04',
+    commercial: 20,
+    public_good: 15
+  },
+  {
+    date: '2025-03-05',
+    commercial: 17,
+    public_good: 13
+  },
+  {
+    date: '2025-03-06',
+    commercial: 14,
+    public_good: 17
+  },
+  {
+    date: '2025-03-07',
+    commercial: 13,
+    public_good: 15
+  },
+  {
+    date: '2025-03-08',
+    commercial: 16,
+    public_good: 15
+  },
+  {
+    date: '2025-03-09',
+    commercial: 13,
+    public_good: 19
+  },
+  {
+    date: '2025-03-10',
+    commercial: 15,
+    public_good: 13
+  },
+  {
+    date: '2025-03-11',
+    commercial: 16,
+    public_good: 10
+  },
+  {
+    date: '2025-03-12',
+    commercial: 15,
+    public_good: 14
+  },
+  {
+    date: '2025-03-13',
+    commercial: 16,
+    public_good: 18
+  },
+  {
+    date: '2025-03-14',
+    commercial: 19,
+    public_good: 19
+  },
+  {
+    date: '2025-03-15',
+    commercial: 15,
+    public_good: 22
+  },
+  {
+    date: '2025-03-16',
+    commercial: 17,
+    public_good: 17
+  },
+  {
+    date: '2025-03-17',
+    commercial: 11,
+    public_good: 15
+  },
+  {
+    date: '2025-03-18',
+    commercial: 17,
+    public_good: 17
+  },
+  {
+    date: '2025-03-19',
+    commercial: 13,
+    public_good: 17
+  },
+  {
+    date: '2025-03-20',
+    commercial: 15,
+    public_good: 17
+  },
+  {
+    date: '2025-03-21',
+    commercial: 18,
+    public_good: 15
+  },
+  {
+    date: '2025-03-22',
+    commercial: 15,
+    public_good: 13
+  },
+  {
+    date: '2025-03-23',
+    commercial: 16,
+    public_good: 17
+  },
+  {
+    date: '2025-03-24',
+    commercial: 16,
+    public_good: 19
+  },
+  {
+    date: '2025-03-25',
+    commercial: 21,
+    public_good: 15
+  },
+  {
+    date: '2025-03-26',
+    commercial: 15,
+    public_good: 17
+  },
+  {
+    date: '2025-03-27',
+    commercial: 17,
+    public_good: 20
+  },
+  {
+    date: '2025-03-28',
+    commercial: 22,
+    public_good: 17
+  },
+  {
+    date: '2025-03-29',
+    commercial: 14,
+    public_good: 20
+  },
+  {
+    date: '2025-03-30',
+    commercial: 16,
+    public_good: 24
+  },
+  {
+    date: '2025-03-31',
+    commercial: 15,
+    public_good: 11
+  },
+  {
+    date: '2025-04-01',
+    commercial: 15,
+    public_good: 11
+  },
+  {
+    date: '2025-04-02',
+    commercial: 11,
+    public_good: 15
+  },
+  {
+    date: '2025-04-03',
+    commercial: 19,
+    public_good: 18
+  },
+  {
+    date: '2025-04-04',
+    commercial: 12,
+    public_good: 14
+  },
+  {
+    date: '2025-04-05',
+    commercial: 17,
+    public_good: 14
+  },
+  {
+    date: '2025-04-06',
+    commercial: 18,
+    public_good: 22
+  },
+  {
+    date: '2025-04-07',
+    commercial: 11,
+    public_good: 15
+  },
+  {
+    date: '2025-04-08',
+    commercial: 16,
+    public_good: 10
+  },
+  {
+    date: '2025-04-09',
+    commercial: 13,
+    public_good: 15
+  },
+  {
+    date: '2025-04-10',
+    commercial: 19,
+    public_good: 18
+  },
+  {
+    date: '2025-04-11',
+    commercial: 16,
+    public_good: 15
+  },
+  {
+    date: '2025-04-12',
+    commercial: 19,
+    public_good: 19
+  },
+  {
+    date: '2025-04-13',
+    commercial: 12,
+    public_good: 15
+  },
+  {
+    date: '2025-04-14',
+    commercial: 15,
+    public_good: 12
+  },
+  {
+    date: '2025-04-15',
+    commercial: 13,
+    public_good: 16
+  },
+  {
+    date: '2025-04-16',
+    commercial: 14,
+    public_good: 20
+  },
+  {
+    date: '2025-04-17',
+    commercial: 19,
+    public_good: 17
+  },
+  {
+    date: '2025-04-18',
+    commercial: 14,
+    public_good: 17
+  },
+  {
+    date: '2025-04-19',
+    commercial: 15,
+    public_good: 11
+  },
+  {
+    date: '2025-04-20',
+    commercial: 19,
+    public_good: 19
+  },
+  {
+    date: '2025-04-21',
+    commercial: 16,
+    public_good: 13
+  },
+  {
+    date: '2025-04-22',
+    commercial: 21,
+    public_good: 17
+  },
+  {
+    date: '2025-04-23',
+    commercial: 21,
+    public_good: 18
+  },
+  {
+    date: '2025-04-24',
+    commercial: 13,
+    public_good: 13
+  },
+  {
+    date: '2025-04-25',
+    commercial: 15,
+    public_good: 12
+  },
+  {
+    date: '2025-04-26',
+    commercial: 19,
+    public_good: 14
+  },
+  {
+    date: '2025-04-27',
+    commercial: 16,
+    public_good: 13
+  },
+  {
+    date: '2025-04-28',
+    commercial: 12,
+    public_good: 14
+  },
+  {
+    date: '2025-04-29',
+    commercial: 15,
+    public_good: 20
+  },
+  {
+    date: '2025-04-30',
+    commercial: 18,
+    public_good: 20
+  },
+  {
+    date: '2025-05-01',
+    commercial: 15,
+    public_good: 11
+  },
+  {
+    date: '2025-05-02',
+    commercial: 19,
+    public_good: 14
+  },
+  {
+    date: '2025-05-03',
+    commercial: 16,
+    public_good: 21
+  },
+  {
+    date: '2025-05-04',
+    commercial: 17,
+    public_good: 20
+  },
+  {
+    date: '2025-05-05',
+    commercial: 12,
+    public_good: 16
+  },
+  {
+    date: '2025-05-06',
+    commercial: 18,
+    public_good: 12
+  },
+  {
+    date: '2025-05-07',
+    commercial: 21,
+    public_good: 19
+  },
+  {
+    date: '2025-05-08',
+    commercial: 17,
+    public_good: 16
+  },
+  {
+    date: '2025-05-09',
+    commercial: 15,
+    public_good: 20
+  },
+  {
+    date: '2025-05-10',
+    commercial: 16,
+    public_good: 23
+  },
+  {
+    date: '2025-05-11',
+    commercial: 18,
+    public_good: 20
+  },
+  {
+    date: '2025-05-12',
+    commercial: 17,
+    public_good: 19
+  },
+  {
+    date: '2025-05-13',
+    commercial: 19,
+    public_good: 19
+  },
+  {
+    date: '2025-05-14',
+    commercial: 18,
+    public_good: 20
+  },
+  {
+    date: '2025-05-15',
+    commercial: 16,
+    public_good: 13
+  }
+];
 
 // Last 3 months data
-export const barChartData = last6MonthsEarningsData.slice(-90);
-
-const result: {
-  [key: string]: { commercialTotal: number; publicGoodTotal: number };
-} = {};
-
-// Helper function to get the full month name and year
-function formatMonth(date: Date): string {
-  const options: Intl.DateTimeFormatOptions = {
-    year: 'numeric',
-    month: 'long'
-  };
-  return date.toLocaleDateString('en-US', options); // Formats as "Month YYYY" (e.g., "March 2025")
-}
-
-// Group data by month and calculate sums
-last6MonthsEarningsData.forEach((entry) => {
-  const date = new Date(entry.date);
-  const formattedMonth = formatMonth(date); // Get the "Month YYYY" format
-
-  if (!result[formattedMonth]) {
-    result[formattedMonth] = { commercialTotal: 0, publicGoodTotal: 0 };
+export const barChartData = [
+  {
+    date: '2025-02-15',
+    commercial: 17,
+    public_good: 23
+  },
+  {
+    date: '2025-02-16',
+    commercial: 15,
+    public_good: 18
+  },
+  {
+    date: '2025-02-17',
+    commercial: 21,
+    public_good: 15
+  },
+  {
+    date: '2025-02-18',
+    commercial: 19,
+    public_good: 19
+  },
+  {
+    date: '2025-02-19',
+    commercial: 21,
+    public_good: 16
+  },
+  {
+    date: '2025-02-20',
+    commercial: 13,
+    public_good: 15
+  },
+  {
+    date: '2025-02-21',
+    commercial: 22,
+    public_good: 18
+  },
+  {
+    date: '2025-02-22',
+    commercial: 15,
+    public_good: 13
+  },
+  {
+    date: '2025-02-23',
+    commercial: 22,
+    public_good: 17
+  },
+  {
+    date: '2025-02-24',
+    commercial: 15,
+    public_good: 13
+  },
+  {
+    date: '2025-02-25',
+    commercial: 14,
+    public_good: 12
+  },
+  {
+    date: '2025-02-26',
+    commercial: 19,
+    public_good: 20
+  },
+  {
+    date: '2025-02-27',
+    commercial: 17,
+    public_good: 22
+  },
+  {
+    date: '2025-02-28',
+    commercial: 16,
+    public_good: 21
+  },
+  {
+    date: '2025-03-01',
+    commercial: 11,
+    public_good: 17
+  },
+  {
+    date: '2025-03-02',
+    commercial: 12,
+    public_good: 18
+  },
+  {
+    date: '2025-03-03',
+    commercial: 20,
+    public_good: 20
+  },
+  {
+    date: '2025-03-04',
+    commercial: 20,
+    public_good: 15
+  },
+  {
+    date: '2025-03-05',
+    commercial: 17,
+    public_good: 13
+  },
+  {
+    date: '2025-03-06',
+    commercial: 14,
+    public_good: 17
+  },
+  {
+    date: '2025-03-07',
+    commercial: 13,
+    public_good: 15
+  },
+  {
+    date: '2025-03-08',
+    commercial: 16,
+    public_good: 15
+  },
+  {
+    date: '2025-03-09',
+    commercial: 13,
+    public_good: 19
+  },
+  {
+    date: '2025-03-10',
+    commercial: 15,
+    public_good: 13
+  },
+  {
+    date: '2025-03-11',
+    commercial: 16,
+    public_good: 10
+  },
+  {
+    date: '2025-03-12',
+    commercial: 15,
+    public_good: 14
+  },
+  {
+    date: '2025-03-13',
+    commercial: 16,
+    public_good: 18
+  },
+  {
+    date: '2025-03-14',
+    commercial: 19,
+    public_good: 19
+  },
+  {
+    date: '2025-03-15',
+    commercial: 15,
+    public_good: 22
+  },
+  {
+    date: '2025-03-16',
+    commercial: 17,
+    public_good: 17
+  },
+  {
+    date: '2025-03-17',
+    commercial: 11,
+    public_good: 15
+  },
+  {
+    date: '2025-03-18',
+    commercial: 17,
+    public_good: 17
+  },
+  {
+    date: '2025-03-19',
+    commercial: 13,
+    public_good: 17
+  },
+  {
+    date: '2025-03-20',
+    commercial: 15,
+    public_good: 17
+  },
+  {
+    date: '2025-03-21',
+    commercial: 18,
+    public_good: 15
+  },
+  {
+    date: '2025-03-22',
+    commercial: 15,
+    public_good: 13
+  },
+  {
+    date: '2025-03-23',
+    commercial: 16,
+    public_good: 17
+  },
+  {
+    date: '2025-03-24',
+    commercial: 16,
+    public_good: 19
+  },
+  {
+    date: '2025-03-25',
+    commercial: 21,
+    public_good: 15
+  },
+  {
+    date: '2025-03-26',
+    commercial: 15,
+    public_good: 17
+  },
+  {
+    date: '2025-03-27',
+    commercial: 17,
+    public_good: 20
+  },
+  {
+    date: '2025-03-28',
+    commercial: 22,
+    public_good: 17
+  },
+  {
+    date: '2025-03-29',
+    commercial: 14,
+    public_good: 20
+  },
+  {
+    date: '2025-03-30',
+    commercial: 16,
+    public_good: 24
+  },
+  {
+    date: '2025-03-31',
+    commercial: 15,
+    public_good: 11
+  },
+  {
+    date: '2025-04-01',
+    commercial: 15,
+    public_good: 11
+  },
+  {
+    date: '2025-04-02',
+    commercial: 11,
+    public_good: 15
+  },
+  {
+    date: '2025-04-03',
+    commercial: 19,
+    public_good: 18
+  },
+  {
+    date: '2025-04-04',
+    commercial: 12,
+    public_good: 14
+  },
+  {
+    date: '2025-04-05',
+    commercial: 17,
+    public_good: 14
+  },
+  {
+    date: '2025-04-06',
+    commercial: 18,
+    public_good: 22
+  },
+  {
+    date: '2025-04-07',
+    commercial: 11,
+    public_good: 15
+  },
+  {
+    date: '2025-04-08',
+    commercial: 16,
+    public_good: 10
+  },
+  {
+    date: '2025-04-09',
+    commercial: 13,
+    public_good: 15
+  },
+  {
+    date: '2025-04-10',
+    commercial: 19,
+    public_good: 18
+  },
+  {
+    date: '2025-04-11',
+    commercial: 16,
+    public_good: 15
+  },
+  {
+    date: '2025-04-12',
+    commercial: 19,
+    public_good: 19
+  },
+  {
+    date: '2025-04-13',
+    commercial: 12,
+    public_good: 15
+  },
+  {
+    date: '2025-04-14',
+    commercial: 15,
+    public_good: 12
+  },
+  {
+    date: '2025-04-15',
+    commercial: 13,
+    public_good: 16
+  },
+  {
+    date: '2025-04-16',
+    commercial: 14,
+    public_good: 20
+  },
+  {
+    date: '2025-04-17',
+    commercial: 19,
+    public_good: 17
+  },
+  {
+    date: '2025-04-18',
+    commercial: 14,
+    public_good: 17
+  },
+  {
+    date: '2025-04-19',
+    commercial: 15,
+    public_good: 11
+  },
+  {
+    date: '2025-04-20',
+    commercial: 19,
+    public_good: 19
+  },
+  {
+    date: '2025-04-21',
+    commercial: 16,
+    public_good: 13
+  },
+  {
+    date: '2025-04-22',
+    commercial: 21,
+    public_good: 17
+  },
+  {
+    date: '2025-04-23',
+    commercial: 21,
+    public_good: 18
+  },
+  {
+    date: '2025-04-24',
+    commercial: 13,
+    public_good: 13
+  },
+  {
+    date: '2025-04-25',
+    commercial: 15,
+    public_good: 12
+  },
+  {
+    date: '2025-04-26',
+    commercial: 19,
+    public_good: 14
+  },
+  {
+    date: '2025-04-27',
+    commercial: 16,
+    public_good: 13
+  },
+  {
+    date: '2025-04-28',
+    commercial: 12,
+    public_good: 14
+  },
+  {
+    date: '2025-04-29',
+    commercial: 15,
+    public_good: 20
+  },
+  {
+    date: '2025-04-30',
+    commercial: 18,
+    public_good: 20
+  },
+  {
+    date: '2025-05-01',
+    commercial: 15,
+    public_good: 11
+  },
+  {
+    date: '2025-05-02',
+    commercial: 19,
+    public_good: 14
+  },
+  {
+    date: '2025-05-03',
+    commercial: 16,
+    public_good: 21
+  },
+  {
+    date: '2025-05-04',
+    commercial: 17,
+    public_good: 20
+  },
+  {
+    date: '2025-05-05',
+    commercial: 12,
+    public_good: 16
+  },
+  {
+    date: '2025-05-06',
+    commercial: 18,
+    public_good: 12
+  },
+  {
+    date: '2025-05-07',
+    commercial: 21,
+    public_good: 19
+  },
+  {
+    date: '2025-05-08',
+    commercial: 17,
+    public_good: 16
+  },
+  {
+    date: '2025-05-09',
+    commercial: 15,
+    public_good: 20
+  },
+  {
+    date: '2025-05-10',
+    commercial: 16,
+    public_good: 23
+  },
+  {
+    date: '2025-05-11',
+    commercial: 18,
+    public_good: 20
+  },
+  {
+    date: '2025-05-12',
+    commercial: 17,
+    public_good: 19
+  },
+  {
+    date: '2025-05-13',
+    commercial: 19,
+    public_good: 19
+  },
+  {
+    date: '2025-05-14',
+    commercial: 18,
+    public_good: 20
+  },
+  {
+    date: '2025-05-15',
+    commercial: 16,
+    public_good: 13
   }
-  result[formattedMonth].commercialTotal += entry.commercial;
-  result[formattedMonth].publicGoodTotal += entry.public_good;
-});
+];
 
-// Prepare the final result array
-const finalResult = Object.keys(result).map((month) => ({
-  month: month.split(' ')[0],
-  year: month.split(' ')[1],
-  commercial: result[month].commercialTotal,
-  public_good: result[month].publicGoodTotal
-}));
-
-export const areaChartData = finalResult.slice(-6);
+export const areaChartData = [
+  {
+    month: 'December',
+    year: '2024',
+    commercial: 512,
+    public_good: 499
+  },
+  {
+    month: 'January',
+    year: '2025',
+    commercial: 513,
+    public_good: 507
+  },
+  {
+    month: 'February',
+    year: '2025',
+    commercial: 484,
+    public_good: 491
+  },
+  {
+    month: 'March',
+    year: '2025',
+    commercial: 490,
+    public_good: 516
+  },
+  {
+    month: 'April',
+    year: '2025',
+    commercial: 473,
+    public_good: 467
+  },
+  {
+    month: 'May',
+    year: '2025',
+    commercial: 254,
+    public_good: 263
+  }
+];
 
 export const tokensBalance = 92;
 
-export const totalTokensSum = last6MonthsEarningsData.reduce(
-  (acc, current) => (acc += current.commercial + current.public_good),
-  0
-);
-
-console.log('totalTokensSum', totalTokensSum);
-
-const pieChartAvailableColors = [
-  'var(--primary)',
-  'var(--primary-light)',
-  'var(--primary-lighter)',
-  'var(--primary-dark)',
-  'var(--primary-darker)'
-];
+export const totalTokensSum = 5946;
 
 const availableDataTypes = [
   { label: 'Temperature', field: 'temperature' },
@@ -147,102 +1466,94 @@ export const availableDataTypesFilterOptions = availableDataTypes.map(
   (dataType) => ({ label: dataType.label, value: dataType.field })
 );
 
-const earnedTokensByDataType = [
-  availableDataTypes[0],
-  availableDataTypes[2],
-  availableDataTypes[4],
-  availableDataTypes[6],
-  availableDataTypes[9],
-  availableDataTypes[10],
-  availableDataTypes[11]
+export const pieChartData = [
+  {
+    label: 'Temperature',
+    field: 'temperature',
+    earned_tokens: 522,
+    fill: 'var(--primary)'
+  },
+  {
+    label: 'Energy Consumption',
+    field: 'energy',
+    earned_tokens: 724,
+    fill: 'var(--primary-light)'
+  },
+  {
+    label: 'Water Usage',
+    field: 'water_usage',
+    earned_tokens: 861,
+    fill: 'var(--primary-lighter)'
+  },
+  {
+    label: 'Door/Window Status',
+    field: 'door_window',
+    earned_tokens: 1486,
+    fill: 'var(--primary-dark)'
+  },
+  {
+    label: 'Alarm Status & Safety Sensors',
+    field: 'alarm_safety',
+    earned_tokens: 834,
+    fill: 'var(--primary-darker)'
+  },
+  {
+    label: 'Behavioral & Appliance Usage',
+    field: 'behavioral',
+    earned_tokens: 941,
+    fill: 'var(--primary)'
+  },
+  {
+    label: 'Device Metadata',
+    field: 'device_metadata',
+    earned_tokens: 578,
+    fill: 'var(--primary-light)'
+  }
 ];
-
-// Step 1: Generate random weights with large variance (0.5–1.5 range)
-const rawWeights = earnedTokensByDataType.map(() => Math.random() + 0.5); // Range ~0.5–1.5
-const weightSum = rawWeights.reduce((sum, w) => sum + w, 0);
-
-// Step 2: Normalize and compute token distribution
-const tokenAllocations = rawWeights.map((w) =>
-  Math.floor((w / weightSum) * totalTokensSum)
-);
-
-// Step 3: Adjust for rounding error to ensure total sums exactly
-const allocatedSum = tokenAllocations.reduce((sum, val) => sum + val, 0);
-const remainder = totalTokensSum - allocatedSum;
-
-// Distribute the remaining tokens (positive or negative) starting from the top
-for (let i = 0; i < Math.abs(remainder); i++) {
-  const index = i % earnedTokensByDataType.length;
-  tokenAllocations[index] += Math.sign(remainder);
-}
-
-console.log('remainder', remainder, totalTokensSum);
-
-export const pieChartData = earnedTokensByDataType.map(
-  (dataTypeTokens, index) => ({
-    ...dataTypeTokens,
-    earned_tokens: tokenAllocations[index],
-    fill: pieChartAvailableColors[index % pieChartAvailableColors.length]
-  })
-);
 
 export interface DataPublishTransaction {
   transaction_id: string;
-  transaction_date: Date;
   time_ago: string;
   earned_tokens: number;
 }
 
-const mockDataTransactions = [];
-
-function generateBase58String(length: number): string {
-  const chars = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz'; // Base58 alphabet
-  let result = '';
-  for (let i = 0; i < length; i++) {
-    result += chars.charAt(Math.floor(Math.random() * chars.length));
+export const recentDataTransactions: DataPublishTransaction[] = [
+  {
+    transaction_id: 'jiQyeUtdY87HeFLeE6TV5MsPot8M6Ptf',
+    time_ago: '35 mins',
+    earned_tokens: 99
+  },
+  {
+    transaction_id: 'VccfGWFabgdWgreHekyMrBmiK9Sd736U',
+    time_ago: '1 hr',
+    earned_tokens: 14
+  },
+  {
+    transaction_id: 'DbQztypu7LJ5cnERX1Bvx8Tu3N4D9zSv',
+    time_ago: '2 hrs',
+    earned_tokens: 74
+  },
+  {
+    transaction_id: 'WVcPTPoHmF4DFJg1tTEpyUk5iQivv882',
+    time_ago: '3 hrs',
+    earned_tokens: 44
+  },
+  {
+    transaction_id: '4jZKe7moxH1R8icutq3wymgXYbdKp8UV',
+    time_ago: '4 hrs',
+    earned_tokens: 78
+  },
+  {
+    transaction_id: 'f5TtD2QxjXDdEcu1Kc4c51NkJCRkaUyj',
+    time_ago: '5 hrs',
+    earned_tokens: 85
+  },
+  {
+    transaction_id: 'atVPQjZWZJt7mHmFTPCoe4Qgq5GbqZTt',
+    time_ago: '7 hrs',
+    earned_tokens: 77
   }
-  return result;
-}
-
-function formatTimeAgo(date: Date): string {
-  const now = new Date();
-  const diffInMilliseconds = now.getTime() - new Date(date).getTime();
-  const seconds = Math.floor(diffInMilliseconds / 1000);
-  const minutes = Math.floor(seconds / 60);
-  const hours = Math.floor(minutes / 60);
-  const days = Math.floor(hours / 24);
-
-  if (seconds < 60) {
-    return `${seconds} sec${seconds !== 1 ? 's' : ''}`;
-  } else if (minutes < 60) {
-    return `${minutes} min${minutes !== 1 ? 's' : ''}`;
-  } else if (hours < 24) {
-    return `${hours} hr${hours !== 1 ? 's' : ''}`;
-  } else {
-    return `${days} day${days !== 1 ? 's' : ''}`;
-  }
-}
-
-const now = new Date();
-
-for (let i = 0; i < 7; i++) {
-  const transactionDate = new Date(
-    now.getTime() - Math.floor(Math.random() * 500) * 60000
-  );
-  mockDataTransactions.push({
-    transaction_id: generateBase58String(32), // Generate mock Solana transaction hash
-    transaction_date: transactionDate,
-    time_ago: formatTimeAgo(transactionDate),
-    earned_tokens: Math.floor(Math.random() * 100) + 1 // Random earned tokens between 1 and 100
-  });
-}
-
-mockDataTransactions.sort(
-  (a, b) => b.transaction_date.getTime() - a.transaction_date.getTime()
-);
-
-export const recentDataTransactions: DataPublishTransaction[] =
-  mockDataTransactions;
+];
 
 interface WithdrawalTransaction {
   transaction_id: string;
@@ -250,77 +1561,33 @@ interface WithdrawalTransaction {
   transaction_date: string;
 }
 
-const withdrawalTransactionsCount = 5;
-const distributableAmount = totalTokensSum - tokensBalance;
-const avg = distributableAmount / withdrawalTransactionsCount;
-const withdrawalVariance = 0.2;
-let mockWithdrawalTransactions = [];
-let rawValues = [];
-
-const parseDate = (rawTime: Date) =>
-  rawTime.getDate().toString().padStart(2, '0') +
-  '.' +
-  (rawTime.getMonth() + 1).toString().padStart(2, '0') +
-  '.' +
-  rawTime.getFullYear() +
-  ' ' +
-  rawTime.getHours().toString().padStart(2, '0') +
-  ':' +
-  rawTime.getMinutes().toString().padStart(2, '0') +
-  ':' +
-  rawTime.getSeconds().toString().padStart(2, '0');
-
-for (let i = 0; i < withdrawalTransactionsCount; i++) {
-  const baseDate = new Date(now.getFullYear(), now.getMonth() - i, 1);
-
-  // Random day in the month (1 to 28 for safety across months)
-  const day = Math.floor(Math.random() * 28) + 1;
-
-  // Random time
-  const hours = Math.floor(Math.random() * 24);
-  const minutes = Math.floor(Math.random() * 60);
-  const seconds = Math.floor(Math.random() * 60);
-
-  const fullDate = new Date(
-    baseDate.getFullYear(),
-    baseDate.getMonth(),
-    day,
-    hours,
-    minutes,
-    seconds
-  );
-  const min = avg * (1 - withdrawalVariance);
-  const max = avg * (1 + withdrawalVariance);
-  const value = Math.random() * (max - min) + min;
-  rawValues.push(value);
-  mockWithdrawalTransactions.push({
-    transaction_id: generateBase58String(32), // Generate mock Solana transaction hash
-    transaction_date: parseDate(fullDate),
-    withdrawn_tokens: 0 // Initialize later
-  });
-}
-
-// Normalize the raw values so their sum = distributableAmount
-const rawSum = rawValues.reduce((a, b) => a + b, 0);
-const scaledValues = rawValues.map((v) => (v / rawSum) * distributableAmount);
-
-// Optional: Round to a fixed decimal (e.g., 2 decimal places)
-const finalValues = scaledValues.map((v) => Math.round(v * 100) / 100);
-
-// Adjust rounding error to ensure exact sum
-const finalSum = finalValues.reduce((a, b) => a + b, 0);
-const diff = Math.round((distributableAmount - finalSum) * 100) / 100;
-
-// Fix last value to balance the total
-finalValues[finalValues.length - 1] += diff;
-
-mockWithdrawalTransactions.forEach(
-  (withdrawalTransaction, index) =>
-    (withdrawalTransaction.withdrawn_tokens = Math.floor(finalValues[index]))
-);
-
-export const withdrawalTransactions: WithdrawalTransaction[] =
-  mockWithdrawalTransactions;
+export const withdrawalTransactions: WithdrawalTransaction[] = [
+  {
+    transaction_id: 'CBZM39tNpUVvLo2xSvUGEEwabctyv7Cx',
+    transaction_date: '24.05.2025 20:22:57',
+    withdrawn_tokens: 1093
+  },
+  {
+    transaction_id: 'DWuQTLooFjx3s6pHGfPymNMDfJf9GBX1',
+    transaction_date: '09.04.2025 03:00:47',
+    withdrawn_tokens: 1072
+  },
+  {
+    transaction_id: 'PR7W7edX9yoYbYHfkbJHT2CBk5Rqf8d2',
+    transaction_date: '13.03.2025 09:57:54',
+    withdrawn_tokens: 1131
+  },
+  {
+    transaction_id: 'WVdsyvqRYkFcjPqerqK1XTRPerLFUKPv',
+    transaction_date: '11.02.2025 10:39:25',
+    withdrawn_tokens: 1195
+  },
+  {
+    transaction_id: 'uKpByz3hVjhT9Wot4r1JPnuwq2xWvY8Y',
+    transaction_date: '02.01.2025 02:10:33',
+    withdrawn_tokens: 1361
+  }
+];
 
 interface DeviceDataForDataType {
   categoryValue: String;
@@ -336,69 +1603,625 @@ export type Device = {
   categories: Array<DeviceDataForDataType>;
 };
 
-const availableDataTypesValues = availableDataTypesFilterOptions.map(
-  (dataTypeOption) => dataTypeOption.value
-);
-
-export const devices: Device[] = Array.from({ length: 30 }, (_, i) => {
-  const categories = getRandomCategories();
-  return {
-    name: generateName(categories),
-    serial_number: generateSerial(),
-    software_version: `v${randomVersion()}`,
-    hardware_version: `v${randomVersion()}`,
-    categories: categories.map((cat) => ({
-      categoryValue: cat,
-      public_good_use: Math.random() < 0.6,
-      commercial_use: Math.random() < 0.6
-    }))
-  };
-});
-
-function getRandomCategories() {
-  const shuffled = [...availableDataTypesValues].sort(
-    () => 0.5 - Math.random()
-  );
-  return shuffled.slice(0, Math.floor(Math.random() * 4) + 1);
-}
-
-function generateSerial() {
-  return (
-    Math.random().toString(36).substring(2, 6).toUpperCase() +
-    '-' +
-    Math.random().toString(36).substring(2, 6).toUpperCase()
-  );
-}
-
-function randomVersion() {
-  return `${rand(1, 3)}.${rand(0, 9)}.${rand(0, 19)}`;
-}
-
-function rand(min: number, max: number) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-function generateName(categories: string[]): string {
-  const has = (cat: string) => categories.includes(cat);
-
-  if (has('temperature') && has('humidity')) return 'TempSense Pro';
-  if (has('energy') && has('behavioral')) return 'SmartEnergy Hub';
-  if (has('air_quality') && has('noise')) return 'AirAware Monitor';
-  if (has('water_leak_humidty')) return 'LeakGuard Plus';
-  if (has('door_window') && has('alarm_safety')) return 'SecureEntry Unit';
-  if (has('occupany') && has('behavioral')) return 'PresenceTrack Beacon';
-  if (has('water_usage')) return 'AquaMeter';
-  if (has('alarm_safety') && has('device_metadata')) return 'SafeHome Node';
-  if (has('door_window')) return 'DoorSense';
-  if (has('occupany')) return 'RoomOccupy Sensor';
-  if (has('air_quality')) return 'AirCheck Station';
-  if (has('noise')) return 'NoiseWatcher';
-  if (has('temperature')) return 'ThermoPoint';
-  if (has('humidity')) return 'HumidGuard';
-  if (has('energy')) return 'PowerWatch';
-  if (has('behavioral')) return 'HabitLogger';
-  if (has('device_metadata')) return 'MetaSensor-X';
-
-  // Fallback if no pattern matched
-  return `SmartHome Device ${rand(1000, 9999)}`;
-}
+export const devices: Device[] = [
+  {
+    name: 'TempSense Pro',
+    serial_number: '9ASU-1PZQ',
+    software_version: 'v1.7.2',
+    hardware_version: 'v3.3.18',
+    categories: [
+      {
+        categoryValue: 'air_quality',
+        public_good_use: false,
+        commercial_use: true
+      },
+      {
+        categoryValue: 'temperature',
+        public_good_use: false,
+        commercial_use: true
+      },
+      {
+        categoryValue: 'humidity',
+        public_good_use: false,
+        commercial_use: false
+      },
+      {
+        categoryValue: 'energy',
+        public_good_use: true,
+        commercial_use: false
+      }
+    ]
+  },
+  {
+    name: 'AirCheck Station',
+    serial_number: 'TPW4-WPUP',
+    software_version: 'v2.2.16',
+    hardware_version: 'v3.3.6',
+    categories: [
+      {
+        categoryValue: 'air_quality',
+        public_good_use: true,
+        commercial_use: true
+      },
+      {
+        categoryValue: 'energy',
+        public_good_use: true,
+        commercial_use: true
+      }
+    ]
+  },
+  {
+    name: 'TempSense Pro',
+    serial_number: 'QPC6-W3JV',
+    software_version: 'v3.1.12',
+    hardware_version: 'v3.1.11',
+    categories: [
+      {
+        categoryValue: 'energy',
+        public_good_use: true,
+        commercial_use: false
+      },
+      {
+        categoryValue: 'humidity',
+        public_good_use: false,
+        commercial_use: false
+      },
+      {
+        categoryValue: 'temperature',
+        public_good_use: true,
+        commercial_use: false
+      },
+      {
+        categoryValue: 'air_quality',
+        public_good_use: false,
+        commercial_use: false
+      }
+    ]
+  },
+  {
+    name: 'HumidGuard',
+    serial_number: 'GXXR-WMHX',
+    software_version: 'v3.8.2',
+    hardware_version: 'v3.0.17',
+    categories: [
+      {
+        categoryValue: 'ocuppany',
+        public_good_use: true,
+        commercial_use: true
+      },
+      {
+        categoryValue: 'energy',
+        public_good_use: true,
+        commercial_use: false
+      },
+      {
+        categoryValue: 'humidity',
+        public_good_use: true,
+        commercial_use: true
+      }
+    ]
+  },
+  {
+    name: 'AquaMeter',
+    serial_number: 'QYW0-7SB2',
+    software_version: 'v1.5.11',
+    hardware_version: 'v3.2.6',
+    categories: [
+      {
+        categoryValue: 'noise',
+        public_good_use: false,
+        commercial_use: true
+      },
+      {
+        categoryValue: 'water_usage',
+        public_good_use: false,
+        commercial_use: true
+      },
+      {
+        categoryValue: 'humidity',
+        public_good_use: false,
+        commercial_use: true
+      }
+    ]
+  },
+  {
+    name: 'AquaMeter',
+    serial_number: 'QPR3-75IQ',
+    software_version: 'v3.9.13',
+    hardware_version: 'v1.6.5',
+    categories: [
+      {
+        categoryValue: 'air_quality',
+        public_good_use: false,
+        commercial_use: false
+      },
+      {
+        categoryValue: 'water_usage',
+        public_good_use: true,
+        commercial_use: true
+      }
+    ]
+  },
+  {
+    name: 'LeakGuard Plus',
+    serial_number: '2OT1-ZXN1',
+    software_version: 'v3.8.6',
+    hardware_version: 'v3.5.18',
+    categories: [
+      {
+        categoryValue: 'behavioral',
+        public_good_use: true,
+        commercial_use: true
+      },
+      {
+        categoryValue: 'noise',
+        public_good_use: true,
+        commercial_use: true
+      },
+      {
+        categoryValue: 'water_leak_humidty',
+        public_good_use: true,
+        commercial_use: false
+      },
+      {
+        categoryValue: 'device_metadata',
+        public_good_use: true,
+        commercial_use: true
+      }
+    ]
+  },
+  {
+    name: 'TempSense Pro',
+    serial_number: 'TL3K-5K9I',
+    software_version: 'v1.4.0',
+    hardware_version: 'v3.6.14',
+    categories: [
+      {
+        categoryValue: 'humidity',
+        public_good_use: true,
+        commercial_use: false
+      },
+      {
+        categoryValue: 'temperature',
+        public_good_use: true,
+        commercial_use: false
+      },
+      {
+        categoryValue: 'energy',
+        public_good_use: true,
+        commercial_use: false
+      }
+    ]
+  },
+  {
+    name: 'DoorSense',
+    serial_number: '5F70-3U2D',
+    software_version: 'v3.3.9',
+    hardware_version: 'v2.1.4',
+    categories: [
+      {
+        categoryValue: 'ocuppany',
+        public_good_use: true,
+        commercial_use: true
+      },
+      {
+        categoryValue: 'door_window',
+        public_good_use: false,
+        commercial_use: true
+      }
+    ]
+  },
+  {
+    name: 'AquaMeter',
+    serial_number: 'GLT9-9LDP',
+    software_version: 'v2.6.8',
+    hardware_version: 'v3.6.19',
+    categories: [
+      {
+        categoryValue: 'water_usage',
+        public_good_use: true,
+        commercial_use: true
+      },
+      {
+        categoryValue: 'noise',
+        public_good_use: false,
+        commercial_use: true
+      },
+      {
+        categoryValue: 'ocuppany',
+        public_good_use: true,
+        commercial_use: true
+      }
+    ]
+  },
+  {
+    name: 'TempSense Pro',
+    serial_number: 'YXEA-EW30',
+    software_version: 'v3.6.12',
+    hardware_version: 'v2.6.19',
+    categories: [
+      {
+        categoryValue: 'humidity',
+        public_good_use: true,
+        commercial_use: false
+      },
+      {
+        categoryValue: 'temperature',
+        public_good_use: false,
+        commercial_use: false
+      },
+      {
+        categoryValue: 'air_quality',
+        public_good_use: true,
+        commercial_use: true
+      },
+      {
+        categoryValue: 'energy',
+        public_good_use: false,
+        commercial_use: true
+      }
+    ]
+  },
+  {
+    name: 'HumidGuard',
+    serial_number: 'G9U0-ZCHD',
+    software_version: 'v1.9.15',
+    hardware_version: 'v1.3.3',
+    categories: [
+      {
+        categoryValue: 'humidity',
+        public_good_use: true,
+        commercial_use: true
+      }
+    ]
+  },
+  {
+    name: 'LeakGuard Plus',
+    serial_number: 'GP33-8BGS',
+    software_version: 'v2.7.2',
+    hardware_version: 'v3.6.14',
+    categories: [
+      {
+        categoryValue: 'air_quality',
+        public_good_use: true,
+        commercial_use: true
+      },
+      {
+        categoryValue: 'water_leak_humidty',
+        public_good_use: true,
+        commercial_use: false
+      },
+      {
+        categoryValue: 'alarm_safety',
+        public_good_use: true,
+        commercial_use: false
+      },
+      {
+        categoryValue: 'humidity',
+        public_good_use: true,
+        commercial_use: false
+      }
+    ]
+  },
+  {
+    name: 'SafeHome Node',
+    serial_number: '4DEZ-AKED',
+    software_version: 'v1.2.18',
+    hardware_version: 'v3.8.19',
+    categories: [
+      {
+        categoryValue: 'air_quality',
+        public_good_use: false,
+        commercial_use: false
+      },
+      {
+        categoryValue: 'alarm_safety',
+        public_good_use: true,
+        commercial_use: false
+      },
+      {
+        categoryValue: 'behavioral',
+        public_good_use: true,
+        commercial_use: true
+      },
+      {
+        categoryValue: 'device_metadata',
+        public_good_use: true,
+        commercial_use: true
+      }
+    ]
+  },
+  {
+    name: 'ThermoPoint',
+    serial_number: 'ZKZA-1BYG',
+    software_version: 'v1.5.9',
+    hardware_version: 'v2.7.13',
+    categories: [
+      {
+        categoryValue: 'temperature',
+        public_good_use: false,
+        commercial_use: false
+      },
+      {
+        categoryValue: 'energy',
+        public_good_use: false,
+        commercial_use: true
+      }
+    ]
+  },
+  {
+    name: 'AquaMeter',
+    serial_number: 'BIOS-GM47',
+    software_version: 'v1.1.11',
+    hardware_version: 'v2.3.8',
+    categories: [
+      {
+        categoryValue: 'temperature',
+        public_good_use: false,
+        commercial_use: true
+      },
+      {
+        categoryValue: 'water_usage',
+        public_good_use: true,
+        commercial_use: false
+      },
+      {
+        categoryValue: 'energy',
+        public_good_use: true,
+        commercial_use: false
+      },
+      {
+        categoryValue: 'air_quality',
+        public_good_use: true,
+        commercial_use: false
+      }
+    ]
+  },
+  {
+    name: 'DoorSense',
+    serial_number: 'YDQT-4K9N',
+    software_version: 'v1.3.16',
+    hardware_version: 'v3.9.9',
+    categories: [
+      {
+        categoryValue: 'door_window',
+        public_good_use: true,
+        commercial_use: false
+      }
+    ]
+  },
+  {
+    name: 'LeakGuard Plus',
+    serial_number: 'H1SA-FZ5A',
+    software_version: 'v2.6.15',
+    hardware_version: 'v3.1.0',
+    categories: [
+      {
+        categoryValue: 'water_leak_humidty',
+        public_good_use: false,
+        commercial_use: true
+      },
+      {
+        categoryValue: 'door_window',
+        public_good_use: true,
+        commercial_use: true
+      }
+    ]
+  },
+  {
+    name: 'TempSense Pro',
+    serial_number: 'XCPK-U5A8',
+    software_version: 'v3.5.2',
+    hardware_version: 'v2.6.15',
+    categories: [
+      {
+        categoryValue: 'temperature',
+        public_good_use: true,
+        commercial_use: true
+      },
+      {
+        categoryValue: 'humidity',
+        public_good_use: true,
+        commercial_use: false
+      },
+      {
+        categoryValue: 'energy',
+        public_good_use: true,
+        commercial_use: false
+      },
+      {
+        categoryValue: 'air_quality',
+        public_good_use: true,
+        commercial_use: false
+      }
+    ]
+  },
+  {
+    name: 'HumidGuard',
+    serial_number: 'UK6B-7DFW',
+    software_version: 'v3.1.19',
+    hardware_version: 'v1.1.18',
+    categories: [
+      {
+        categoryValue: 'humidity',
+        public_good_use: true,
+        commercial_use: true
+      }
+    ]
+  },
+  {
+    name: 'HabitLogger',
+    serial_number: '1XZJ-CLGK',
+    software_version: 'v3.2.0',
+    hardware_version: 'v2.9.6',
+    categories: [
+      {
+        categoryValue: 'behavioral',
+        public_good_use: false,
+        commercial_use: false
+      },
+      {
+        categoryValue: 'ocuppany',
+        public_good_use: true,
+        commercial_use: true
+      }
+    ]
+  },
+  {
+    name: 'HumidGuard',
+    serial_number: '54DG-EU2V',
+    software_version: 'v3.0.12',
+    hardware_version: 'v1.9.15',
+    categories: [
+      {
+        categoryValue: 'humidity',
+        public_good_use: true,
+        commercial_use: true
+      }
+    ]
+  },
+  {
+    name: 'ThermoPoint',
+    serial_number: 'SLBB-J8PW',
+    software_version: 'v1.4.14',
+    hardware_version: 'v3.8.0',
+    categories: [
+      {
+        categoryValue: 'temperature',
+        public_good_use: false,
+        commercial_use: true
+      }
+    ]
+  },
+  {
+    name: 'TempSense Pro',
+    serial_number: 'IILF-GCEU',
+    software_version: 'v1.7.15',
+    hardware_version: 'v3.5.19',
+    categories: [
+      {
+        categoryValue: 'humidity',
+        public_good_use: false,
+        commercial_use: false
+      },
+      {
+        categoryValue: 'temperature',
+        public_good_use: false,
+        commercial_use: true
+      }
+    ]
+  },
+  {
+    name: 'AirCheck Station',
+    serial_number: 'I23A-XNDG',
+    software_version: 'v1.6.7',
+    hardware_version: 'v3.6.3',
+    categories: [
+      {
+        categoryValue: 'temperature',
+        public_good_use: true,
+        commercial_use: false
+      },
+      {
+        categoryValue: 'air_quality',
+        public_good_use: true,
+        commercial_use: false
+      }
+    ]
+  },
+  {
+    name: 'SmartEnergy Hub',
+    serial_number: 'S1NN-TGZ2',
+    software_version: 'v1.2.7',
+    hardware_version: 'v3.3.5',
+    categories: [
+      {
+        categoryValue: 'energy',
+        public_good_use: true,
+        commercial_use: false
+      },
+      {
+        categoryValue: 'behavioral',
+        public_good_use: false,
+        commercial_use: false
+      },
+      {
+        categoryValue: 'alarm_safety',
+        public_good_use: false,
+        commercial_use: true
+      },
+      {
+        categoryValue: 'water_leak_humidty',
+        public_good_use: false,
+        commercial_use: false
+      }
+    ]
+  },
+  {
+    name: 'DoorSense',
+    serial_number: 'L8R7-4SJT',
+    software_version: 'v1.3.11',
+    hardware_version: 'v2.6.4',
+    categories: [
+      {
+        categoryValue: 'temperature',
+        public_good_use: true,
+        commercial_use: true
+      },
+      {
+        categoryValue: 'door_window',
+        public_good_use: false,
+        commercial_use: true
+      }
+    ]
+  },
+  {
+    name: 'AirCheck Station',
+    serial_number: '5SN3-YRIE',
+    software_version: 'v2.3.13',
+    hardware_version: 'v2.5.9',
+    categories: [
+      {
+        categoryValue: 'air_quality',
+        public_good_use: true,
+        commercial_use: false
+      },
+      {
+        categoryValue: 'humidity',
+        public_good_use: false,
+        commercial_use: false
+      }
+    ]
+  },
+  {
+    name: 'HabitLogger',
+    serial_number: 'PI5M-7S8Q',
+    software_version: 'v2.1.10',
+    hardware_version: 'v1.9.14',
+    categories: [
+      {
+        categoryValue: 'behavioral',
+        public_good_use: true,
+        commercial_use: false
+      }
+    ]
+  },
+  {
+    name: 'TempSense Pro',
+    serial_number: 'WVEI-Q4U5',
+    software_version: 'v3.3.7',
+    hardware_version: 'v2.3.0',
+    categories: [
+      {
+        categoryValue: 'humidity',
+        public_good_use: false,
+        commercial_use: true
+      },
+      {
+        categoryValue: 'temperature',
+        public_good_use: true,
+        commercial_use: true
+      }
+    ]
+  }
+];
